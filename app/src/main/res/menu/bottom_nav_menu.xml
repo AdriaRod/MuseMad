@@ -18,5 +18,5 @@
         android:layout_height="wrap_content"
         android:title="profile"
         android:icon="@drawable/baseline_person_4_24"
-        android:id="@+id/person"/>
+        android:id="@+id/id_person"/>
 </menu>
