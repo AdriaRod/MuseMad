@@ -22,7 +22,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Splash"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -31,11 +31,15 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".Splash"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
