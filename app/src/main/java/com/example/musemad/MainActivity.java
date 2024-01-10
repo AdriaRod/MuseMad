@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.ClipData;
 import android.os.Bundle;
-
 import com.example.musemad.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
