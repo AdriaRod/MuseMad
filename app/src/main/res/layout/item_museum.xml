@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="#EEF1F5"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -13,7 +14,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
+        app:cardElevation="10dp"
         app:cardBackgroundColor="#ffffff">
 
         <TextView
@@ -29,7 +30,8 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:background="#EEF1F5">
 
             <ImageView
                 android:id="@+id/museumImage"
