@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- home -->
+    <item
+        android:id="@+id/id_home"
+        android:title="Home"
+        android:icon="@drawable/ic_museo"
+        android:contentDescription="none"
+        app:showAsAction="always"
+        />
+
+    <!-- map -->
 
     <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="home"
-        android:icon="@drawable/baseline_home_24"
-        android:id="@+id/id_home"/>
-    <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="map"
+        android:id="@+id/id_mapa"
+        android:title="Mapa"
         android:icon="@drawable/baseline_map_24"
-        android:id="@+id/id_map"/>
+        android:contentDescription="none"
+        app:showAsAction="always"
+        />
+
+    <!-- profile -->
+
     <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="profile"
+        android:id="@+id/id_profile"
+        android:title="Perfil"
         android:icon="@drawable/baseline_person_4_24"
-        android:id="@+id/id_person"/>
+        android:contentDescription="none"
+        app:showAsAction="always"
+        />
+
+
 </menu>

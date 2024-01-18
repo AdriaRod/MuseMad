@@ -1,58 +1,109 @@
 package com.example.musemad;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.example.musemad.databinding.ActivityMainBinding;
 import com.example.musemad.fragments.HomeFragment;
 import com.example.musemad.fragments.MapFragment;
 import com.example.musemad.fragments.ProfileFragment;
-
+import com.example.musemad.fragments.SectionsPagerAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+
+    private SectionsPagerAdapter sectionsPagerAdapter; //1
+    private MenuItem prevMenuItem;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
+        setContentView(R.layout.activity_main);
 
+        //2
+        sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
+        //3
+        ViewPager viewPager1 = findViewById(R.id.view_pager);
+        viewPager1.setAdapter(sectionsPagerAdapter);
 
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+        //4
+        BottomNavigationView mybottomNavView = findViewById(R.id.bottom_navigation);
 
-            int itemId = item.getItemId();
+        //6
+        mybottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            if (itemId == R.id.id_home) {
-                replaceFragment(new HomeFragment());
-            } else if (itemId == R.id.id_map) {
-                replaceFragment(new MapFragment());
-            } else if (itemId == R.id.id_person) {
-                replaceFragment(new ProfileFragment());
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.id_home) {
+                    item.setChecked(true);
+                    Toast.makeText(MainActivity.this, "HOME", Toast.LENGTH_SHORT).show();
+                    removeBadge(mybottomNavView, itemId);
+                    viewPager1.setCurrentItem(0);
+                } else if (itemId == R.id.id_mapa) {
+                    item.setChecked(true);
+                    Toast.makeText(MainActivity.this, "MAP", Toast.LENGTH_SHORT).show();
+                    removeBadge(mybottomNavView, itemId);
+                    viewPager1.setCurrentItem(1);
+                } else if (itemId == R.id.id_profile) {
+                    item.setChecked(true);
+                    Toast.makeText(MainActivity.this, "PROFILE", Toast.LENGTH_SHORT).show();
+                    removeBadge(mybottomNavView, itemId);
+                    viewPager1.setCurrentItem(2);
+                }
+                return false;
+            }
+        });
+
+        viewPager1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
 
-            return true;
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem != null) {
+                    prevMenuItem.setChecked(false);
+                } else {
+                    mybottomNavView.getMenu().getItem(0).setChecked(false);
+                    mybottomNavView.getMenu().getItem(position).setChecked(true);
+                    removeBadge(mybottomNavView, mybottomNavView.getMenu().getItem(position).getItemId());
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
         });
 
 
     }//onCreate fin
 
 
-    private void replaceFragment(Fragment fragment){
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
-
+    public static void removeBadge(BottomNavigationView bottomNavigationView, @IdRes int itemId) {
+        BottomNavigationItemView itemView = bottomNavigationView.findViewById(itemId);
+        if (itemView.getChildCount() == 3) {
+            itemView.removeViewAt(2);
+        }
     }
+
+
 
 }//fin
