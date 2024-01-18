@@ -96,10 +96,33 @@
                     android:layout_height="wrap_content">
                     
                     <ImageView
+                        android:id="@+id/icono_modo_noche"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src=""
+                        android:src="@drawable/baseline_brightness_3_24"
+                        android:background="@drawable/round_back_night_icon"
                         android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Modo noche"
+                        android:layout_toEndOf="@id/icono_modo_noche"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/lightModeSwitch"
+                        />
                     
                 </RelativeLayout>
 
