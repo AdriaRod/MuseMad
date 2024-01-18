@@ -20,13 +20,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/azul_madrid">
+        android:background="@drawable/top_bar_style"
+        >
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="14dp"
-            android:src="@drawable/back_btn" />
+            android:src="@drawable/back_btn"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,11 +53,12 @@
             android:background="@color/white">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/baseline_person_4_24" />
+                android:layout_marginTop="20dp"
+                android:src="@drawable/baseline_person_4_24"
+                android:background="@drawable/back_round_circle"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,16 +84,107 @@
                 android:textColor="@color/white"
                 android:paddingEnd="30dp"/>
 
+            <!-- Contenido -->
             <LinearLayout
                 android:background="@drawable/round_back_white10_20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:padding="15dp">
-                
+
+                <!-- Favorito -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icono_corazon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/ic_black_heart"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Favoritos"
+                        android:layout_toEndOf="@id/icono_corazon"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="14dp"
+                        android:src="@drawable/baseline_navigate_next_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+                <!-- Por visitar -->
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icono_bandera"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/ic_flag"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Por visitar"
+                        android:layout_toEndOf="@id/icono_bandera"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="14dp"
+                        android:src="@drawable/baseline_navigate_next_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                    <!-- -->
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+            <!-- preferencias -->
+            <LinearLayout
+                android:background="@drawable/round_back_white10_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <!-- Night mode / Light Mode -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -124,6 +218,205 @@
                         android:theme="@style/lightModeSwitch"
                         />
                     
+                </RelativeLayout>
+
+                <!-- Notifications -->
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icono_notificaciones"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_notifications_active_24"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Notificaciones"
+                        android:layout_toEndOf="@id/icono_notificaciones"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/lightModeSwitch"
+                        />
+
+                </RelativeLayout>
+
+                <!-- Idioma -->
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icono_idioma"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_public_24"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Idioma"
+                        android:layout_toEndOf="@id/icono_idioma"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="14dp"
+                        android:src="@drawable/baseline_navigate_next_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- mas cosas que podamos meter en la configuracion de nuestra app -->
+            <LinearLayout
+                android:background="@drawable/round_back_white10_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <!-- Night mode / Light Mode -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/a"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_brightness_3_24"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Modo noche"
+                        android:layout_toEndOf="@id/a"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/lightModeSwitch"
+                        />
+
+                </RelativeLayout>
+
+                <!-- Notifications -->
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/b"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_notifications_active_24"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Notificaciones"
+                        android:layout_toEndOf="@id/b"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/lightModeSwitch"
+                        />
+
+                </RelativeLayout>
+
+                <!-- Idioma -->
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/c"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_public_24"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Idioma"
+                        android:layout_toEndOf="@id/c"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="14dp"
+                        android:src="@drawable/baseline_navigate_next_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+
                 </RelativeLayout>
 
             </LinearLayout>
