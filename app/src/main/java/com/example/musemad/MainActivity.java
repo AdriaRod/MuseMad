@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import com.example.musemad.databinding.ActivityMainBinding;
+import com.example.musemad.fragments.HomeFragment;
+import com.example.musemad.fragments.MapFragment;
+import com.example.musemad.fragments.ProfileFragment;
+
 
 
 public class MainActivity extends AppCompatActivity {

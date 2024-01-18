@@ -48,5 +48,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("jp.wasabeef:glide-transformations:4.3.0")
 
+    implementation ("androidx.preference:preference:1.1.1") //15/01 13:16
+
+
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }
