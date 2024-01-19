@@ -1,14 +1,19 @@
-package com.example.musemad.fragments;
+package com.example.musemad;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.musemad.R;
+import android.widget.SearchView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +24,47 @@ public class HomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    private RecyclerView recyclerView;
+    private MuseumAdapter museumAdapter;
+    private SearchView sView;
+    View transparentView;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        sView = view.findViewById(R.id.searchView);
+
+        sView.setIconifiedByDefault(false);
+        sView.setQueryHint("Busca tu museo favorito...");
+
+
+        sView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        // Aquí debes crear una lista de objetos Museum con los datos de tus museos
+        List<Museum> museums = new ArrayList<>();
+        museums.add(new Museum("Museo del Prado", R.drawable.prado));
+        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen));
+        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia));
+
+        museumAdapter = new MuseumAdapter(museums);
+        recyclerView.setAdapter(museumAdapter);
+
+        return view;
+    }
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -57,10 +103,4 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
-    }
 }
