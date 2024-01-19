@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><!-- res/values/styles.xml -->
+    <style name="SearchViewStyle">
+        <!-- Tamaño del texto en la barra de búsqueda -->
+        <item name="android:textSize">14sp</item>
+        <!-- Cambia el color del texto en la barra de búsqueda -->
+        <item name="android:textColor">@android:color/white</item>
+        <!-- Cambia el color del cursor en la barra de búsqueda -->
+        <item name="colorControlNormal">@android:color/white</item>
+        <!-- Cambia el tamaño del ícono en la barra de búsqueda -->
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:maxWidth">10000dp</item>
+        <!-- Cambia el fondo de la barra de búsqueda -->
+        <item name="android:background">@drawable/custom_searchview_background</item>
+    </style>
+</resources>

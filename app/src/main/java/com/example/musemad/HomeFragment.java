@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.SearchView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private MuseumAdapter museumAdapter;
+    private SearchView sView;
+    View transparentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +36,23 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        sView = view.findViewById(R.id.searchView);
+
+        sView.setIconifiedByDefault(false);
+        sView.setQueryHint("Busca tu museo favorito...");
+
+
+        sView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         // Aquí debes crear una lista de objetos Museum con los datos de tus museos
         List<Museum> museums = new ArrayList<>();
