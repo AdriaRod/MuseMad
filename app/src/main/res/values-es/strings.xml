@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MuseMad</string>
+    <string name="Login">INICIO</string>
+    <string name="Register">REGISTRO</string>
+    <string name="SubtituloLogin">Inicia sesión o entra como invitado para descubir los museos de Madrid:</string>
+    <string name="SubtituloRegister">Registrate o entra como invitado para descubir los museos de Madrid:</string>
+    <string name="Email">Correo Electrónico</string>
+    <string name="Passw">Contraseña</string>
+    <string name="cPassw">Confirmar Contraseña</string>
+    <string name="cLogin">Iniciar sesión</string>
+    <string name="Guest">Invitado</string>
+    <string name="eRegist">Registrate aquí</string>
+    <string name="cRegist">Registrarse</string>
+</resources>
