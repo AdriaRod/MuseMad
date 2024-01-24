@@ -7,7 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.musemad.fragments.DetailFragment;
 
 import java.util.List;
 
@@ -28,11 +32,33 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Museum museum = museums.get(position);
+        final Museum museum = museums.get(position);
 
         holder.museumName.setText(museum.getName());
         holder.museumImage.setImageResource(museum.getImageResourceId());
+
+        // Agrega un OnClickListener al elemento de la lista
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Abre el nuevo fragmento y pasa los datos del museo seleccionado
+                DetailFragment detailFragment = DetailFragment.newInstance(museum.getName(), museum.getImageResourceId());
+
+                // Inicia la transacción de fragmento
+                FragmentTransaction transaction = ((AppCompatActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
+
+                // Reemplaza el contenido del contenedor del fragmento con el DetailFragment
+                transaction.replace(R.id.fragmentContainer, detailFragment);
+
+                // Añade la transacción al back stack
+                transaction.addToBackStack(null);
+
+                // Ejecuta la transacción
+                transaction.commit();
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
