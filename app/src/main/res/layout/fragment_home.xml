@@ -24,11 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="40dp"
-        style="@style/SearchViewStyle"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+
+
+        />
+
     <View
         android:id="@+id/transparentView"
         android:layout_width="0dp"

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381195652120",
+    "project_id": "musemad-5b0c2",
+    "storage_bucket": "musemad-5b0c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381195652120:android:9dada7ab4ad6183500476d",
+        "android_client_info": {
+          "package_name": "com.example.musemad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs9RjtyQFeVC6AJsp9mt17WiA2AztyA2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

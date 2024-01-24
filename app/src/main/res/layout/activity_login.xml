@@ -84,7 +84,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:backgroundTint="#E30513"
-                android:fontFamily="@font/montserrat"
                 android:onClick="openMain"
                 android:text="@string/cLogin"
                 app:cornerRadius="10dp"
