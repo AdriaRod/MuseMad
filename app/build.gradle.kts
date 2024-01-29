@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.musemad"
+    namespace = "com.adga.musemad"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.musemad"
+        applicationId = "com.adga.musemad"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
