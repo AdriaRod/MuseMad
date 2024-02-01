@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private MuseumAdapter museumAdapter;
     private SearchView sView;
-    View transparentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

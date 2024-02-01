@@ -6,6 +6,7 @@
 <p align="center">
 <img src="img/loginv1.png" alt="Imagen del login" width="364" height="720"/>
 </p>
+
 ## Register
 <p align="center">
 <img src="img/registerv1.png" alt="Imagen del register" width="364" height="720"/>
