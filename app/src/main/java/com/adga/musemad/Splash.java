@@ -1,4 +1,4 @@
-package com.example.musemad;
+package com.adga.musemad;
 
 import androidx.appcompat.app.AppCompatActivity;
 

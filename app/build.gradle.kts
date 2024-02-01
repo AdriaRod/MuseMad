@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.musemad"
+    namespace = "com.adga.musemad"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.musemad"
+        applicationId = "com.adga.musemad"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -46,17 +46,15 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("jp.wasabeef:glide-transformations:4.3.0")
-
     implementation ("androidx.preference:preference:1.1.1") //15/01 13:16
-
-
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
 
 }

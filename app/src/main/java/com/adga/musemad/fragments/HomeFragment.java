@@ -1,4 +1,4 @@
-package com.example.musemad.fragments;
+package com.adga.musemad.fragments;
 
 import android.os.Bundle;
 
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 
 import android.widget.SearchView;
 
-import com.example.musemad.Museum;
-import com.example.musemad.MuseumAdapter;
-import com.example.musemad.R;
+import com.adga.musemad.Museum;
+import com.adga.musemad.MuseumAdapter;
+import com.adga.musemad.R;
 
 import java.util.ArrayList;
 import java.util.List;

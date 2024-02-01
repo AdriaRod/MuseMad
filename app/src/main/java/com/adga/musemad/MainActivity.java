@@ -1,22 +1,16 @@
-package com.example.musemad;
+package com.adga.musemad;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.musemad.databinding.ActivityMainBinding;
-import com.example.musemad.fragments.HomeFragment;
-import com.example.musemad.fragments.MapFragment;
-import com.example.musemad.fragments.ProfileFragment;
-import com.example.musemad.fragments.SectionsPagerAdapter;
+import com.adga.musemad.databinding.ActivityMainBinding;
+import com.adga.musemad.fragments.SectionsPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

@@ -1,4 +1,4 @@
-package com.example.musemad;
+package com.adga.musemad;
 
 // Museum.java
 public class Museum {

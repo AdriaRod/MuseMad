@@ -1,4 +1,4 @@
-package com.example.musemad.fragments;
+package com.adga.musemad.fragments;
 
 import android.content.Context;
 
