@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musemad.fragments.DetailFragment;
+import com.adga.musemad.fragments.DetailFragment;
 
 import java.util.List;
 

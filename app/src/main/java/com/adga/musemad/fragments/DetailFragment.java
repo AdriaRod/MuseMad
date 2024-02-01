@@ -1,4 +1,4 @@
-package com.example.musemad.fragments;
+package com.adga.musemad.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.musemad.R;
+import com.adga.musemad.R;
 
 public class DetailFragment extends Fragment {
 
