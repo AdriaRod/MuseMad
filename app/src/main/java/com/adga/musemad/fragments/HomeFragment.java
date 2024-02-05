@@ -1,5 +1,7 @@
-package com.example.musemad.fragments;
+package com.adga.musemad.fragments;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,9 +14,9 @@ import android.view.ViewGroup;
 
 import android.widget.SearchView;
 
-import com.example.musemad.Museum;
-import com.example.musemad.MuseumAdapter;
-import com.example.musemad.R;
+import com.adga.musemad.Museum;
+import com.adga.musemad.MuseumAdapter;
+import com.adga.musemad.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private MuseumAdapter museumAdapter;
     private SearchView sView;
-    View transparentView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +45,13 @@ public class HomeFragment extends Fragment {
 
         sView.setIconifiedByDefault(false);
         sView.setQueryHint("Busca tu museo favorito...");
+
+        // Accede a la vista interna del SearchView y cambia su fondo a transparente
+        int id = sView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        View searchPlateView = sView.findViewById(id);
+        if (searchPlateView != null) {
+            searchPlateView.setBackgroundColor(Color.TRANSPARENT);
+        }
 
 
         sView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -60,6 +68,9 @@ public class HomeFragment extends Fragment {
 
         // Aquí debes crear una lista de objetos Museum con los datos de tus museos
         List<Museum> museums = new ArrayList<>();
+        museums.add(new Museum("Museo del Prado", R.drawable.prado));
+        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen));
+        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia));
         museums.add(new Museum("Museo del Prado", R.drawable.prado));
         museums.add(new Museum("Museo Thyssen", R.drawable.thyssen));
         museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia));
