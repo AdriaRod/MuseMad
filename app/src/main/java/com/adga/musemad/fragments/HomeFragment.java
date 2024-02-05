@@ -66,14 +66,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
         // Aquí debes crear una lista de objetos Museum con los datos de tus museos
         List<Museum> museums = new ArrayList<>();
-        museums.add(new Museum("Museo del Prado", R.drawable.prado));
-        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen));
-        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia));
-        museums.add(new Museum("Museo del Prado", R.drawable.prado));
-        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen));
-        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia));
+        museums.add(new Museum("Museo del Prado", R.drawable.prado, getString(R.string.descPrado)));
+// Añade otros museos con descripciones
+        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen, getString(R.string.descPrado)));
+        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia, getString(R.string.descPrado)));
+        museums.add(new Museum("Museo del Prado", R.drawable.prado, getString(R.string.descPrado)));
+        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen, getString(R.string.descPrado)));
+        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia, getString(R.string.descPrado)));
 
         museumAdapter = new MuseumAdapter(museums);
         recyclerView.setAdapter(museumAdapter);

@@ -13,4 +13,6 @@
     <string name="Guest">Guest</string>
     <string name="eRegist">Register here</string>
     <string name="cRegist">Register</string>
+
+    <string name="descPrado">El Prado es famoso por su impresionante colección de pinturas españolas. Puedes admirar obras de artistas como Diego Velázquez, Francisco de Goya, El Greco y Bartolomé Esteban Murillo.</string>
 </resources>

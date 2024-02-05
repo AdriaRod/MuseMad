@@ -15,22 +15,28 @@ public class DetailFragment extends Fragment {
 
     private static final String ARG_NAME = "arg_name";
     private static final String ARG_IMAGE_RESOURCE_ID = "arg_image_resource_id";
+    private static final String ARG_DESC = "arg_desc";
 
     private String museumName;
     private int imageResourceId;
+    private String museumDesc;
 
     public DetailFragment() {
         // Required empty public constructor
     }
 
-    public static DetailFragment newInstance(String name, int imageResourceId) {
+    public static DetailFragment newInstance(String name, int imageResourceId, String desc) {
         DetailFragment fragment = new DetailFragment();
         Bundle args = new Bundle();
         args.putString(ARG_NAME, name);
         args.putInt(ARG_IMAGE_RESOURCE_ID, imageResourceId);
+        args.putString(ARG_DESC, desc); // Agregar la descripción a los argumentos
+
         fragment.setArguments(args);
         return fragment;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +44,10 @@ public class DetailFragment extends Fragment {
         if (getArguments() != null) {
             museumName = getArguments().getString(ARG_NAME);
             imageResourceId = getArguments().getInt(ARG_IMAGE_RESOURCE_ID);
+            museumDesc = getArguments().getString(ARG_DESC);
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,19 +58,16 @@ public class DetailFragment extends Fragment {
         TextView detailTitle = view.findViewById(R.id.detailTitle);
         TextView detailDesc = view.findViewById(R.id.detailDesc);
 
-        // Obtén los datos del museo del bundle
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            String museumName = arguments.getString(ARG_NAME);
-            int imageResourceId = arguments.getInt(ARG_IMAGE_RESOURCE_ID);
-
-            // Actualiza los elementos según la información del museo
+        // Obtén la descripción directamente del HomeFragment
+        // Asegúrate de que museumDesc se establezca en HomeFragment cuando creas los objetos Museum
+        if (getArguments() != null) {
             detailTitle.setText(museumName);
             detailImage.setImageResource(imageResourceId);
-            detailDesc.setText("Descripcion museo");
+            detailDesc.setText(getArguments().getString(ARG_DESC));
         }
 
         return view;
     }
+
 
 }
