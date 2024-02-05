@@ -82,12 +82,14 @@
                 android:id="@+id/aceptar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="44dp"
                 android:backgroundTint="#E30513"
                 android:onClick="openMain"
                 android:text="@string/cLogin"
+                android:textStyle="bold"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.508"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/passw" />
 
