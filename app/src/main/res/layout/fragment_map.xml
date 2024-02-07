@@ -4,26 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rojo_madrid"
-    tools:context=".fragments.MapFragment">
+    tools:context=".fragments.MapFragment"
+    xmlns:map="http://schemas.android.com/apk/res-auto">
+
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <ImageView
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        map:cameraZoom="10"
+        map:uiRotateGestures="true"
+        map:uiZoomControls="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/mapa1"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="50dp"
-        android:textColor="@color/black"
-        android:text="Map Fragment" />
-
-
+        android:layout_marginBottom="80dp"
+        />
 
 
 </FrameLayout>
