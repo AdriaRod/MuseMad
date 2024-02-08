@@ -13,12 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MuseMad"
         tools:targetApi="31" >
-        <activity
-            android:name=".fragments.Language"
-            android:exported="false" />
-        <activity
-            android:name=".fragments.ToVisit"
-            android:exported="false" />
+
         <activity
             android:name=".fragments.Favorites"
             android:exported="false" /> <!-- esto es para el API DEL MAPA DE GOOGLE -->
