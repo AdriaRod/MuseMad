@@ -1,4 +1,7 @@
-package com.example.musemad;
+package com.adga.musemad;
+
+import com.adga.musemad.MainActivity;
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.adga.musemad.Register;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;

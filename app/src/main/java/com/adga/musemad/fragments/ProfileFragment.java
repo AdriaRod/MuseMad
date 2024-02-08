@@ -1,5 +1,7 @@
 package com.adga.musemad.fragments;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.adga.musemad.R;
 
@@ -30,15 +33,7 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
@@ -48,6 +43,9 @@ public class ProfileFragment extends Fragment {
         return fragment;
     }
 
+    private ImageView btn_favoritos, btn_por_visitar, btn_idioma;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +53,56 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Inicializa los ImageView utilizando findViewById
+        btn_favoritos = view.findViewById(R.id.btn_favoritos);
+        btn_por_visitar = view.findViewById(R.id.btn_por_visitar);
+        btn_idioma = view.findViewById(R.id.btn_idioma);
+
+        btn_favoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crea un Intent para abrir la actividad correspondiente
+                Intent intent = new Intent(getActivity(), Favorites.class);
+                startActivity(intent);
+            }
+        });
+
+        // Agrega un OnClickListener al ImageView btn_por_visitar
+        btn_por_visitar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crea un Intent para abrir la actividad correspondiente
+                Intent intent = new Intent(getActivity(), ToVisit.class);
+                startActivity(intent);
+            }
+        });
+
+        // Agrega un OnClickListener al ImageView btn_idioma
+        btn_idioma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crea un Intent para abrir la actividad correspondiente
+                Intent intent = new Intent(getActivity(), Language.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+
 }
