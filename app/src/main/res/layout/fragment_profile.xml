@@ -45,37 +45,6 @@
             android:orientation="vertical"
             android:background="@color/white">
 
-            <ImageView
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/baseline_person_4_24"
-                android:background="@drawable/back_round_circle"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Usuario"
-                android:textColor="@color/black"
-                android:textSize="22dp"
-                android:textStyle="bold"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:paddingStart="30dp"
-                android:layout_gravity="center"
-                android:background="@drawable/round_back_secondary_100"
-                android:text="Editar perfil"
-                android:textStyle="bold"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:paddingEnd="30dp"/>
 
             <!-- Contenido -->
             <LinearLayout
@@ -125,44 +94,7 @@
 
                 </RelativeLayout>
 
-                <!-- Por visitar -->
-                <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/icono_bandera"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@mipmap/ic_flag"
-                        android:background="@drawable/round_back_night_icon"
-                        android:padding="12dp"/>
-
-                    <TextView
-                        android:layout_marginStart="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Por visitar"
-                        android:layout_toEndOf="@id/icono_bandera"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-
-                        />
-
-                    <ImageView
-                        android:id="@+id/btn_por_visitar"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:padding="14dp"
-                        android:src="@drawable/baseline_navigate_next_24"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
-
-                    <!-- -->
-
-                </RelativeLayout>
 
 
 
@@ -252,44 +184,7 @@
 
                 </RelativeLayout>
 
-                <!-- Idioma -->
-                <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/icono_idioma"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_public_24"
-                        android:background="@drawable/round_back_night_icon"
-                        android:padding="12dp"/>
-
-                    <TextView
-                        android:layout_marginStart="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Idioma"
-                        android:layout_toEndOf="@id/icono_idioma"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-
-                        />
-
-                    <ImageView
-                        android:id="@+id/btn_idioma"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:padding="14dp"
-                        android:src="@drawable/baseline_navigate_next_24"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
-
-
-
-                </RelativeLayout>
 
             </LinearLayout>
 
