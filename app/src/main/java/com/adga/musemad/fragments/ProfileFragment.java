@@ -43,7 +43,7 @@ public class ProfileFragment extends Fragment {
         return fragment;
     }
 
-    private ImageView btn_favoritos, btn_por_visitar, btn_idioma;
+    private ImageView btn_favoritos;
 
 
     @Override
@@ -70,8 +70,7 @@ public class ProfileFragment extends Fragment {
 
         // Inicializa los ImageView utilizando findViewById
         btn_favoritos = view.findViewById(R.id.btn_favoritos);
-        btn_por_visitar = view.findViewById(R.id.btn_por_visitar);
-        btn_idioma = view.findViewById(R.id.btn_idioma);
+
 
         btn_favoritos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,25 +81,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        // Agrega un OnClickListener al ImageView btn_por_visitar
-        btn_por_visitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crea un Intent para abrir la actividad correspondiente
-                Intent intent = new Intent(getActivity(), ToVisit.class);
-                startActivity(intent);
-            }
-        });
 
-        // Agrega un OnClickListener al ImageView btn_idioma
-        btn_idioma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crea un Intent para abrir la actividad correspondiente
-                Intent intent = new Intent(getActivity(), Language.class);
-                startActivity(intent);
-            }
-        });
     }
 
 

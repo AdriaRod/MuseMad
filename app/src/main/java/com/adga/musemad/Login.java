@@ -37,12 +37,7 @@ public class Login extends AppCompatActivity {
                 .transform(new BlurTransformation(25))
                 .into((ImageView) findViewById(R.id.backgroundImage));
 
-        b_invitado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAlertDialogButtonClicked();
-            }
-        });
+
 
     } //fin del onCreate
 
