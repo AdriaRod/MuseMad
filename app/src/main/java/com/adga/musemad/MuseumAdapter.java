@@ -42,7 +42,8 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 // Abre el nuevo fragmento y pasa los datos del museo seleccionado
-                DetailFragment detailFragment = DetailFragment.newInstance(museum.getName(), museum.getImageResourceId());
+                DetailFragment detailFragment = DetailFragment.newInstance(museum.getName(),
+                        museum.getImageResourceId(), museum.getDescription());
 
                 // Inicia la transacción de fragmento
                 FragmentTransaction transaction = ((AppCompatActivity) view.getContext()).getSupportFragmentManager().beginTransaction();

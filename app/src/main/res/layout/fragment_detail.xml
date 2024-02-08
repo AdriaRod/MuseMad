@@ -39,10 +39,10 @@
         android:id="@+id/detailDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="Descripción del museo"
         android:textSize="16dp"
+        android:layout_margin="16dp"
         app:layout_constraintTop_toBottomOf="@id/detailTitle"
-        tools:layout_editor_absoluteX="16dp" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
