@@ -7,20 +7,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.adga.musemad.fragments.DetailFragment;
+import com.adga.musemad.R;
 
 import java.util.List;
 
 // MuseumAdapter.java
 public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder> {
     private List<Museum> museums;
+    private OnItemClickListener listener;
 
-    public MuseumAdapter(List<Museum> museums) {
+    public interface OnItemClickListener {
+        void onItemClick(Museum museum);
+    }
+
+    public MuseumAdapter(List<Museum> museums, OnItemClickListener listener) {
         this.museums = museums;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,34 +36,21 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Museum museum = museums.get(position);
+        Museum museum = museums.get(position);
 
         holder.museumName.setText(museum.getName());
         holder.museumImage.setImageResource(museum.getImageResourceId());
 
-        // Agrega un OnClickListener al elemento de la lista
+        // Agregar clic listener a la tarjeta
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Abre el nuevo fragmento y pasa los datos del museo seleccionado
-                DetailFragment detailFragment = DetailFragment.newInstance(museum.getName(),
-                        museum.getImageResourceId(), museum.getDescription());
-
-                // Inicia la transacción de fragmento
-                FragmentTransaction transaction = ((AppCompatActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
-
-                // Reemplaza el contenido del contenedor del fragmento con el DetailFragment
-                transaction.replace(R.id.fragmentContainer, detailFragment);
-
-                // Añade la transacción al back stack
-                transaction.addToBackStack(null);
-
-                // Ejecuta la transacción
-                transaction.commit();
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(museum);
+                }
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

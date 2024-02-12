@@ -7,7 +7,7 @@
     android:background="#EEF1F5"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".fragments.DetailFragment">
+    tools:context=".MuseumDetail">
 
     <ImageView
         android:id="@+id/detailImage"
