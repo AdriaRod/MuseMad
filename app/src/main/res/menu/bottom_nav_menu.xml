@@ -24,9 +24,9 @@
     <!-- profile -->
 
     <item
-        android:id="@+id/id_profile"
-        android:title="Perfil"
-        android:icon="@drawable/baseline_person_4_24"
+        android:id="@+id/id_favorite"
+        android:title="Favoritos"
+        android:icon="@mipmap/ic_black_heart"
         android:contentDescription="none"
         app:showAsAction="always"
         />

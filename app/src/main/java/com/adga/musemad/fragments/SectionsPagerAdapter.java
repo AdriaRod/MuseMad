@@ -38,7 +38,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 case 1:
                     return new MapFragment();
                 case 2:
-                    return new ProfileFragment();
+                    return new FavoritesFragment();
                 default:
                     return null;
 

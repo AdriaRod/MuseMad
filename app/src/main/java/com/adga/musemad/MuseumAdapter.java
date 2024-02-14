@@ -18,6 +18,13 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
     private List<Museum> museums;
     private OnItemClickListener listener;
 
+    public void updateData(List<Museum> museums) {
+        this.museums.clear();
+        this.museums.addAll(museums);
+        notifyDataSetChanged();
+    }
+
+
     public interface OnItemClickListener {
         void onItemClick(Museum museum);
     }
@@ -66,5 +73,6 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
             museumImage = itemView.findViewById(R.id.museumImage);
             museumName = itemView.findViewById(R.id.museumName);
         }
+
     }
 }

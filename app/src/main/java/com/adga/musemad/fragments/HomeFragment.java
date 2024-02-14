@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         sView = view.findViewById(R.id.searchView);
@@ -55,7 +56,6 @@ public class HomeFragment extends Fragment {
 
         // Configura el adaptador con la lista de museos y un listener de clics
         museumAdapter = new MuseumAdapter(museums, new MuseumAdapter.OnItemClickListener() {
-            @Override
             public void onItemClick(Museum museum) {
                 // Abre la actividad de detalles del museo cuando se hace clic en una tarjeta
                 Intent intent = new Intent(getActivity(), MuseumDetail.class);
