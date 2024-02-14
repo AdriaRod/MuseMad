@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.adga.musemad.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -192,7 +193,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     private void addMuseums(GoogleMap mMap) {
 
-        /************ AÑADIR MUSEOS **********/
 
         // Añadir marcador personalizado para el Museo del Prado
         LatLng pradoLocation = new LatLng(40.4139, -3.6922);
@@ -221,7 +221,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         Marker reinaSofiaMarker = mMap.addMarker(reinaSofiaMarkerOptions);
         markerList.add(reinaSofiaMarker);
 
+
+
+
     }
+
 
 
     @Override
