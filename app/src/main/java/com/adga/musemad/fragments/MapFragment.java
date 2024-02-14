@@ -123,6 +123,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         );
         mMap.setLatLngBoundsForCameraTarget(madridBounds);
 
+        // Configuración de la cámara para una vista en 3D
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(40.416775, -3.703790))  // Centro de Madrid
+                .zoom(15)  // Nivel de zoom
+                .tilt(45)  // Inclinación para vista en 3D
+                .bearing(90)  // Orientación del mapa
+                .build();
+
+        // Mover la cámara a la posición configurada
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
 
         /* AÑADE LOS MUSEOS */
         addMuseums(mMap);
