@@ -1,10 +1,14 @@
 package com.adga.musemad.fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.viewmodel.CreationExtras;
 
@@ -14,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.adga.musemad.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,6 +32,8 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +41,9 @@ import java.util.List;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
 
+    private static final int REQUEST_LOCATION_PERMISSION = 1234;
     EditText txtLatitud, txtLongitud;
     GoogleMap mMap;
-
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -73,7 +81,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 
-
         // Obtén el SupportMapFragment y configura el mapa
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -83,6 +90,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     // Declara una lista para almacenar los marcadores
     List<Marker> markerList = new ArrayList<>();
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
@@ -115,6 +123,75 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mMap.setLatLngBoundsForCameraTarget(madridBounds);
 
 
+        /* AÑADE LOS MUSEOS */
+        addMuseums(mMap);
+
+
+        // Define el nivel de zoom deseado (por ejemplo, 15.0f)
+        float zoomLevel = 15.0f;
+        // Actualiza la cámara con la nueva posición y nivel de zoom
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(centroMadrid, zoomLevel));
+
+
+
+
+        /********* UBICACION DEL USUARIO EN EL MAPA ********/
+        // Solicitar permisos de ubicación en tiempo de ejecución
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+            return;
+        } else {
+            // Si ya tienes los permisos, obtener la ubicación actual
+            getCurrentLocation();
+        }
+    }
+
+    private void getCurrentLocation() {
+        // Verificar permisos de ubicación
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Si los permisos no están concedidos, solicítalos
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+            return;
+        }
+
+        // Obtener el cliente de ubicación fusionada
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        // Obtener la última ubicación conocida
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.puntorojo); // Reemplaza "blue_dot" con el nombre de tu icono
+                            mMap.addMarker(new MarkerOptions().position(currentLocation).title("Mi Ubicación").icon(icon));
+                        }
+                    }
+                });
+
+
+
+
+}//fin del onMapReady
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == requestCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permiso concedido, obtener la ubicación actual
+                getCurrentLocation();
+            } else {
+                // Permiso denegado, mostrar un mensaje o tomar una acción alternativa
+            }
+        }
+    }
+
+    private void addMuseums(GoogleMap mMap) {
+
         /************ AÑADIR MUSEOS **********/
 
         // Añadir marcador personalizado para el Museo del Prado
@@ -144,22 +221,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         Marker reinaSofiaMarker = mMap.addMarker(reinaSofiaMarkerOptions);
         markerList.add(reinaSofiaMarker);
 
-
-
-        // Define el nivel de zoom deseado (por ejemplo, 15.0f)
-        float zoomLevel = 15.0f;
-        // Actualiza la cámara con la nueva posición y nivel de zoom
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(centroMadrid, zoomLevel));
-
-
-
-
-    }//fin del onMapReady
-
-
-
-
-
+    }
 
 
     @Override
