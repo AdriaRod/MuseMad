@@ -16,8 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adga.musemad.Museum;
 import com.adga.musemad.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,12 +37,16 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener {
+
+    private List<Museum> museums = new ArrayList<>();
 
     private static final int REQUEST_LOCATION_PERMISSION = 1234;
     EditText txtLatitud, txtLongitud;
@@ -74,6 +80,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        // Inicializa la lista de museos
+        initMuseums();
+    }
+
+    // Método para inicializar la lista de museos
+    private void initMuseums() {
+        museums.add(new Museum("Museo del Prado", R.drawable.prado, getString(R.string.descPrado)));
+        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen, getString(R.string.descThyssen)));
+        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia, getString(R.string.descReinaSofia)));
     }
 
     @Override
@@ -187,7 +203,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
 
 
-}//fin del onMapReady
+    }//fin del onMapReady
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -232,12 +248,109 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         Marker reinaSofiaMarker = mMap.addMarker(reinaSofiaMarkerOptions);
         markerList.add(reinaSofiaMarker);
 
+        // Define un Listener para los clics en los marcadores
 
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // Verifica si el marcador hace referencia a un museo
+                if (marker.getTitle() != null && marker.getTitle().startsWith("Museo")) {
+                    // Muestra el Bottom Sheet correspondiente al museo
+                    showMuseumBottomSheet(marker);
+                    // Devuelve true para indicar que se ha manejado el clic en el marcador
+                    return true;
+                }
+                // Devuelve false para permitir que el mapa maneje el clic en el marcador
+                return false;
+            }
+        });
 
 
     }
 
 
+//    // Método para mostrar el Bottom Sheet del museo
+//    private void showMuseumBottomSheet(Marker marker) {
+//        // Infla el diseño del Bottom Sheet
+//        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
+//
+//        // Configura el contenido del Bottom Sheet con los detalles del museo
+//        TextView museumName = bottomSheetView.findViewById(R.id.museumName);
+//        museumName.setText(marker.getTitle());
+//
+//        // Encuentra el ImageView en el layout
+//        ImageView museumImage = bottomSheetView.findViewById(R.id.imagenMuseo);
+//
+//        // Obtiene el id del museo seleccionado
+//        String museumTitle = marker.getTitle();
+//        int museumImageId = 0;
+//        for (Museum museum : museums) {
+//            if (museum.getName().equals(museumTitle)) {
+//                museumImageId = museum.getImageResourceId();
+//                break;
+//            }
+//        }
+//
+//        // Asigna la imagen correspondiente al ImageView
+//        if (museumImageId != 0) {
+//            museumImage.setImageResource(museumImageId);
+//        }
+//
+//
+//        // Crea y muestra el Bottom Sheet con BottomSheetBehavior configurado
+//        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+//        bottomSheetDialog.setContentView(bottomSheetView);
+//
+//        // Configurar el comportamiento del BottomSheetDialog
+//        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
+//        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED); // Expande automáticamente el BottomSheetDialog
+//        bottomSheetBehavior.setPeekHeight(0); // No muestra el peek del BottomSheetDialog
+//
+//        bottomSheetDialog.show();
+//    }
+
+    // Método para mostrar el Bottom Sheet del museo
+    private void showMuseumBottomSheet(Marker marker) {
+        // Infla el diseño del Bottom Sheet grande
+        View bottomSheetView = getLayoutInflater().inflate(R.layout.large_bottom_sheet_layout, null);
+
+        // Configura el contenido del Bottom Sheet con los detalles del museo
+        TextView museumName = bottomSheetView.findViewById(R.id.museumName);
+        museumName.setText(marker.getTitle());
+
+        // Encuentra el ImageView en el layout
+        ImageView museumImage = bottomSheetView.findViewById(R.id.imagenMuseo);
+
+        // Obtiene el id del museo seleccionado
+        String museumTitle = marker.getTitle();
+        int museumImageId = 0;
+        for (Museum museum : museums) {
+            if (museum.getName().equals(museumTitle)) {
+                museumImageId = museum.getImageResourceId();
+                break;
+            }
+        }
+
+        // Asigna la imagen correspondiente al ImageView
+        if (museumImageId != 0) {
+            museumImage.setImageResource(museumImageId);
+        }
+
+        // Crea y muestra el Bottom Sheet con BottomSheetBehavior configurado
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+        bottomSheetDialog.setContentView(bottomSheetView);
+
+        // Configura el comportamiento del BottomSheetDialog
+        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from((View) bottomSheetView.getParent());
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED); // Expande automáticamente el BottomSheetDialog
+
+        bottomSheetDialog.show();
+    }
+
+
+    private void museums_images(){
+
+    }
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {

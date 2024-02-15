@@ -15,4 +15,8 @@
     <string name="cRegist">Register</string>
 
     <string name="descPrado">El Prado es famoso por su impresionante colección de pinturas españolas. Puedes admirar obras de artistas como Diego Velázquez, Francisco de Goya, El Greco y Bartolomé Esteban Murillo.</string>
+    <string name="descThyssen">El Museo Thyssen-Bornemisza alberga una colección única de arte que abarca desde el Renacimiento hasta el siglo XX. Entre sus obras se encuentran pinturas de artistas como Van Eyck, Rembrandt, Degas, Monet, Picasso y Hopper.</string>
+
+    <string name="descReinaSofia">El Museo Reina Sofía es conocido por su destacada colección de arte moderno y contemporáneo español. Destaca por ser el hogar de obras emblemáticas, como "Guernica" de Pablo Picasso, así como por exhibir obras de Salvador Dalí, Joan Miró y otros artistas españoles e internacionales.</string>
+
 </resources>
