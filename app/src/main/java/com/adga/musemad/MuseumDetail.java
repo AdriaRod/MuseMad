@@ -1,14 +1,14 @@
 package com.adga.musemad;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.adga.musemad.Museum;
+import com.adga.musemad.R;
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MuseumDetail extends AppCompatActivity {
@@ -26,7 +26,7 @@ public class MuseumDetail extends AppCompatActivity {
         if (extras != null) {
             museum = new Museum(
                     extras.getString("museum_name"),
-                    extras.getInt("museum_image"),
+                    extras.getString("museum_image_url"),
                     extras.getString("museum_description"),
                     false // Por defecto, no es favorito
             );
@@ -38,11 +38,13 @@ public class MuseumDetail extends AppCompatActivity {
             FloatingActionButton favoritesButton = findViewById(R.id.botonFav);
 
             nameTextView.setText(museum.getName());
-            imageView.setImageResource(museum.getImageResourceId());
+
+            // Utilizar Glide para cargar la imagen desde la URL en el ImageView
+            Glide.with(this)
+                    .load(museum.getImageUrl())
+                    .into(imageView);
+
             descriptionTextView.setText(museum.getDescription());
-
-
         }
     }
-
 }

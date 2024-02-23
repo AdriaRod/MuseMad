@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.adga.musemad.databinding.ActivityMainBinding;
 import com.adga.musemad.fragments.SectionsPagerAdapter;
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
 
         //2
         sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());

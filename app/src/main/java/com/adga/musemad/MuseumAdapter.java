@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.adga.musemad.R;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -46,7 +46,10 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
         Museum museum = museums.get(position);
 
         holder.museumName.setText(museum.getName());
-        holder.museumImage.setImageResource(museum.getImageResourceId());
+        Glide.with(holder.itemView.getContext())
+                .load(museum.getImageUrl())
+                .placeholder(R.drawable.prado)
+                .into(holder.museumImage);
 
         // Agregar clic listener a la tarjeta
         holder.itemView.setOnClickListener(new View.OnClickListener() {

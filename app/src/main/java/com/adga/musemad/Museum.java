@@ -3,22 +3,24 @@ package com.adga.musemad;
 // Museum.java
 public class Museum {
     private String name;
-    private int imageResourceId;
+    private String imageUrl; // Cambia el tipo de datos a String para almacenar la URL de la imagen
     private String description;
     private boolean fav;
-    public Museum(String name, int imageResourceId, String description, boolean fav) {
+
+    public Museum(String name, String imageUrl, String description, boolean fav) {
         this.name = name;
-        this.imageResourceId = imageResourceId;
-        this.description = String.valueOf(description);
+        this.imageUrl = imageUrl;
+        this.description = description;
         this.fav = fav;
     }
+
 
     public String getName() {
         return name;
     }
 
-    public int getImageResourceId() {
-        return imageResourceId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getDescription() {

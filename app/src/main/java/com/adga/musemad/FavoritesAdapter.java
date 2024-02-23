@@ -1,6 +1,5 @@
 package com.adga.musemad;
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.adga.musemad.R;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -22,7 +24,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         this.museums.addAll(museums);
         notifyDataSetChanged();
     }
-
 
     public interface OnItemClickListener {
         void onItemClick(Museum museum);
@@ -44,8 +45,13 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Museum museum = museums.get(position);
 
+        // Cargar la imagen utilizando Glide desde la URL
+        Glide.with(holder.itemView.getContext())
+                .load(museum.getImageUrl())
+                .placeholder(R.drawable.prado)
+                .into(holder.museumImage);
+
         holder.museumName.setText(museum.getName());
-        holder.museumImage.setImageResource(museum.getImageResourceId());
 
         // Agregar clic listener a la tarjeta
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +63,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -73,6 +78,5 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
             museumImage = itemView.findViewById(R.id.museumImage);
             museumName = itemView.findViewById(R.id.museumName);
         }
-
     }
 }
