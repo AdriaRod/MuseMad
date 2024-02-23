@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,10 +48,10 @@ public class HomeFragment extends Fragment {
 
         // Inicializa la lista de museos
         List<Museum> museums = new ArrayList<>();
-        museums.add(new Museum("Museo del Prado", R.drawable.prado, getString(R.string.descPrado)));
-        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen, getString(R.string.descPrado)));
+        museums.add(new Museum("Museo del Prado", R.drawable.prado, getString(R.string.descPrado), false));
+        museums.add(new Museum("Museo Thyssen", R.drawable.thyssen, getString(R.string.descPrado), false));
         museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia,
-                getString(R.string.descPrado)));
+                getString(R.string.descPrado), false));
 
         // Configura el adaptador con la lista de museos y un listener de clics
         museumAdapter = new MuseumAdapter(museums, new MuseumAdapter.OnItemClickListener() {

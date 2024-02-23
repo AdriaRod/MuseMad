@@ -1,7 +1,6 @@
 package com.adga.musemad;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,10 +9,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.adga.musemad.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MuseumDetail extends AppCompatActivity {
+
+    private Museum museum;
+    private boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +24,12 @@ public class MuseumDetail extends AppCompatActivity {
         // Obtener los datos del intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            final String museumName = extras.getString("museum_name");
-            final int museumImageResource = extras.getInt("museum_image", 0);
-            final String museumDescription = extras.getString("museum_description");
+            museum = new Museum(
+                    extras.getString("museum_name"),
+                    extras.getInt("museum_image"),
+                    extras.getString("museum_description"),
+                    false // Por defecto, no es favorito
+            );
 
             // Mostrar los datos en la interfaz de usuario
             TextView nameTextView = findViewById(R.id.detailTitle);
@@ -33,23 +37,12 @@ public class MuseumDetail extends AppCompatActivity {
             TextView descriptionTextView = findViewById(R.id.detailDesc);
             FloatingActionButton favoritesButton = findViewById(R.id.botonFav);
 
-            nameTextView.setText(museumName);
-            imageView.setImageResource(museumImageResource);
-            descriptionTextView.setText(museumDescription);
+            nameTextView.setText(museum.getName());
+            imageView.setImageResource(museum.getImageResourceId());
+            descriptionTextView.setText(museum.getDescription());
 
-            favoritesButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Guardar los datos del museo en SharedPreferences o en tu base de datos local
-                    SharedPreferences sharedPreferences = getSharedPreferences("favoritos", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("nombreMuseo", museumName);
-                    editor.putInt("imagenMuseo", museumImageResource);
-                    editor.apply();
-                    // Notificar al usuario que el museo ha sido agregado a favoritos
-                    Toast.makeText(MuseumDetail.this, "Museo agregado a favoritos", Toast.LENGTH_SHORT).show();
-                }
-            });
+
         }
     }
+
 }
