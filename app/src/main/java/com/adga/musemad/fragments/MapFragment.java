@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.adga.musemad.Museum;
 import com.adga.musemad.MuseumDetail;
 import com.adga.musemad.R;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -90,9 +91,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     // Método para inicializar la lista de museos
     private void initMuseums() {
-        museums.add(new Museum("Museo del Prado", R.drawable.prado, getString(R.string.descPrado)));
-        museums.add(new Museum("Museo Thyssen-Bornemisza", R.drawable.thyssen, getString(R.string.descThyssen)));
-        museums.add(new Museum("Museo Reina Sofía", R.drawable.reinasofia, getString(R.string.descReinaSofia)));
+        museums.add(new Museum("Museo del Prado", "https://www.hotelindiana.es/wp-content/uploads/2017/12/Visitar-Museo-del-Prado-Gratis.jpg",
+                getString(R.string.descPrado), true));
+        museums.add(new Museum("Museo Thyssen", "https://blog.arzuaga.es/wp-content/uploads/2020/04/museo-thyssen.jpg",
+                getString(R.string.descPrado), false));
+        museums.add(new Museum("Museo Reina Sofía", "https://static2.museoreinasofia.es/sites/default/files/snippet_museo_sede_principal_5.png",
+                getString(R.string.descPrado), true));
     }
 
     @Override
@@ -284,25 +288,31 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         // Encuentra el ImageView en el layout
         ImageView museumImage = bottomSheetView.findViewById(R.id.imagenMuseo);
 
-        // Obtiene el id del museo seleccionado
+        // Obtiene el título del museo seleccionado
         String museumTitle = marker.getTitle();
-        int museumImageId = 0;
+        String museumImageUrl = null;
+
+        // Busca la URL de la imagen del museo
         for (Museum museum : museums) {
             if (museum.getName().equals(museumTitle)) {
-                museumImageId = museum.getImageResourceId();
+                museumImageUrl = museum.getImageUrl();
                 break;
             }
         }
 
-        // Asigna la imagen correspondiente al ImageView
-        if (museumImageId != 0) {
-            museumImage.setImageResource(museumImageId);
+        // Utiliza Glide para cargar la imagen desde la URL en el ImageView
+        if (museumImageUrl != null) {
+            Glide.with(this)
+                    .load(museumImageUrl)
+                    .into(museumImage);
+        } else {
+            museumImage.setImageResource(R.drawable.prado);
         }
 
-        //encontramos el texto "+info" en el layout
+        // Encuentra el texto "+info" en el layout
         TextView moreInfoTextView = bottomSheetView.findViewById(R.id.info_tv);
 
-        //agregamos el onclick
+        // Agrega el onClickListener para abrir la actividad de detalles del museo
         moreInfoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -314,8 +324,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         });
 
-
-
         // Crea y muestra el Bottom Sheet con BottomSheetBehavior configurado
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
         bottomSheetDialog.setContentView(bottomSheetView);
@@ -326,6 +334,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         bottomSheetDialog.show();
     }
+
 
 
     private void openMuseumDetailActivity(String museumTitle) {
@@ -340,14 +349,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         }
 
-        // Si se encontró el museo, pasa la imagen y la descripción como extras
+        // Si se encontró el museo, pasa la URL de la imagen y la descripción como extras
         if (selectedMuseum != null) {
             intent.putExtra("museum_name", museumTitle);
-            intent.putExtra("museum_image", selectedMuseum.getImageResourceId());
+            intent.putExtra("museum_image_url", selectedMuseum.getImageUrl()); // Aquí pasamos la URL de la imagen en lugar del ID de recurso de imagen
             intent.putExtra("museum_description", selectedMuseum.getDescription());
             startActivity(intent);
         }
     }
+
 
 
 
