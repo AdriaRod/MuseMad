@@ -9,12 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.adga.musemad.R;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 // MuseumAdapter.java
-public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder> {
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
     private List<Museum> museums;
     private OnItemClickListener listener;
 
@@ -24,12 +25,11 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-
     public interface OnItemClickListener {
         void onItemClick(Museum museum);
     }
 
-    public MuseumAdapter(List<Museum> museums, OnItemClickListener listener) {
+    public FavoritesAdapter(List<Museum> museums, OnItemClickListener listener) {
         this.museums = museums;
         this.listener = listener;
     }
@@ -37,7 +37,7 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_museum, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_favorites, parent, false);
         return new ViewHolder(view);
     }
 
@@ -45,11 +45,13 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Museum museum = museums.get(position);
 
-        holder.museumName.setText(museum.getName());
+        // Cargar la imagen utilizando Glide desde la URL
         Glide.with(holder.itemView.getContext())
                 .load(museum.getImageUrl())
                 .placeholder(R.drawable.prado)
                 .into(holder.museumImage);
+
+        holder.museumName.setText(museum.getName());
 
         // Agregar clic listener a la tarjeta
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +78,5 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
             museumImage = itemView.findViewById(R.id.museumImage);
             museumName = itemView.findViewById(R.id.museumName);
         }
-
     }
 }

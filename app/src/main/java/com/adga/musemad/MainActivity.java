@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.adga.musemad.databinding.ActivityMainBinding;
 import com.adga.musemad.fragments.SectionsPagerAdapter;
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -47,17 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if (itemId == R.id.id_home) {
                     item.setChecked(true);
-                    Toast.makeText(MainActivity.this, "HOME", Toast.LENGTH_SHORT).show();
                     removeBadge(mybottomNavView, itemId);
                     viewPager1.setCurrentItem(0);
                 } else if (itemId == R.id.id_mapa) {
                     item.setChecked(true);
-                    Toast.makeText(MainActivity.this, "MAP", Toast.LENGTH_SHORT).show();
                     removeBadge(mybottomNavView, itemId);
                     viewPager1.setCurrentItem(1);
-                } else if (itemId == R.id.id_profile) {
+                } else if (itemId == R.id.id_favorite) {
                     item.setChecked(true);
-                    Toast.makeText(MainActivity.this, "PROFILE", Toast.LENGTH_SHORT).show();
                     removeBadge(mybottomNavView, itemId);
                     viewPager1.setCurrentItem(2);
                 }
