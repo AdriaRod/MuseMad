@@ -34,6 +34,8 @@
             android:background="@color/white">
 
             <!-- preferencias -->
+
+
             <LinearLayout
                 android:background="@drawable/round_back_white10_20"
                 android:layout_width="match_parent"
@@ -44,16 +46,17 @@
                 android:orientation="vertical"
                 android:padding="15dp">
 
-                <!-- Night mode / Light Mode -->
+                <!-- About us -->
                 <RelativeLayout
+                    android:id="@+id/aboutus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/icono_modo_noche"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_brightness_3_24"
+                        android:id="@+id/aboutimg"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/information"
                         android:background="@drawable/round_back_night_icon"
                         android:padding="12dp"/>
 
@@ -62,32 +65,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Modo noche"
-                        android:layout_toEndOf="@id/icono_modo_noche"
+                        android:text="Sobre nosotros"
+                        android:layout_toEndOf="@id/aboutimg"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:switchMinWidth="50dp"
-                        android:theme="@style/lightModeSwitch"/>
-
                 </RelativeLayout>
 
-                <!-- Notifications -->
+                <!-- Contact us -->
                 <RelativeLayout
+                    android:id="@+id/contactus"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/icono_notificaciones"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_notifications_active_24"
+                        android:id="@+id/contactimg"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/contactus"
                         android:background="@drawable/round_back_night_icon"
                         android:padding="12dp"/>
 
@@ -96,18 +92,49 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Notificaciones"
-                        android:layout_toEndOf="@id/icono_notificaciones"
+                        android:text="Contáctanos"
+                        android:layout_toEndOf="@id/contactimg"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
 
-                    <androidx.appcompat.widget.SwitchCompat
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/round_back_white10_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <!-- Cerrar sesión -->
+                <RelativeLayout
+                    android:id="@+id/cerrarsesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/cerrarimg"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/logout"
+                        android:background="@drawable/round_back_night_icon"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:switchMinWidth="50dp"
-                        android:theme="@style/lightModeSwitch"/>
+                        android:text="Cerrar sesión"
+                        android:layout_toEndOf="@id/cerrarimg"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
 
                 </RelativeLayout>
 

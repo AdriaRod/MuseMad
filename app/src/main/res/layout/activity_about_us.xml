@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUs"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:elevation="50dp"
+        android:background="@drawable/rounded_bg">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Desarrolladores de Musemad "
+        android:gravity="center"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:background="@drawable/tarjetas_au"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/l2"
+        android:padding="30dp"
+        app:layout_constraintTop_toBottomOf="@id/titulo">
+
+        <RelativeLayout
+        android:id="@+id/gabriel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgGit"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logogit"
+            android:background="@drawable/round_back_night_icon"/>
+
+        <TextView
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Gabriel Fonseca"
+            android:textSize="28dp"
+            android:layout_toEndOf="@id/imgGit"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/tarjetas_au"
+            android:orientation="vertical"
+            android:padding="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/l1">
+
+            <RelativeLayout
+                android:id="@+id/adria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgGit2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/round_back_night_icon"
+                    android:src="@drawable/logogit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@id/imgGit2"
+                    android:text="Adrià Rodríguez"
+                    android:textColor="@color/black"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
