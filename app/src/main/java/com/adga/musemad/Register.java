@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -40,10 +43,9 @@ public class Register extends AppCompatActivity {
                 .transform(new BlurTransformation(25))
                 .into((ImageView) findViewById(R.id.backgroundImage));
 
-        //codigo para desarrollar el registro en Firebase
-
-        mFirestore = FirebaseFirestore.getInstance();
+        // Inicializar Firebase Auth y Firestore
         mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         email = findViewById(R.id.email);
         passwd = findViewById(R.id.passw);
@@ -55,51 +57,58 @@ public class Register extends AppCompatActivity {
                 String emailUser = email.getText().toString().trim();
                 String passwdUser = passwd.getText().toString().trim();
 
-                if(emailUser.isEmpty() && passwdUser.isEmpty()){
-                    Toast.makeText(Register.this, "Complete los datos", Toast.LENGTH_SHORT).show();
-                }else{
+                if (TextUtils.isEmpty(emailUser) || TextUtils.isEmpty(passwdUser)) {
+                    Toast.makeText(Register.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                } else if (passwdUser.length() < 6) {
+                    Toast.makeText(Register.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
+                } else {
                     registerUser(emailUser, passwdUser);
                 }
             }
         });
-
     }
 
     private void registerUser(String emailUser, String passwdUser) {
 
-        mAuth.createUserWithEmailAndPassword(emailUser, passwdUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                String id =  mAuth.getCurrentUser().getUid();
-                Map<String, Object> map = new HashMap<>();
-                map.put("id", id);
-                map.put("email", emailUser);
-
-
-                mFirestore.collection("user").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mAuth.createUserWithEmailAndPassword(emailUser, passwdUser)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        finish();
-                        startActivity(new Intent(Register.this, MainActivity.class));
-                        Toast.makeText(Register.this, "USUARIO REGISTRADO CON EXITO", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Register.this, "ERROR AL GUARDAR", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Registro exitoso, guardar información en Firestore
+                            String id = mAuth.getCurrentUser().getUid();
+                            Map<String, Object> userData = new HashMap<>();
+                            userData.put("email", emailUser);
+
+                            mFirestore.collection("users").document(id)
+                                    .set(userData)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            // Redirigir al usuario a la pantalla principal
+                                            startActivity(new Intent(Register.this, MainActivity.class));
+                                            finish();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(Register.this, "Error al guardar información", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            // Error al registrar el usuario
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(Register.this, "El correo ya está registrado", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Register.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 });
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Register.this, "Error al registrar", Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
+    // Método para abrir la actividad de inicio de sesión
     public void openLogin(View v) {
         Intent intent = new Intent(Register.this, Login.class);
         startActivity(intent);
