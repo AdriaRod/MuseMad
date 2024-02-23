@@ -6,8 +6,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.adga.musemad.Museum;
-import com.adga.musemad.R;
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -28,8 +26,8 @@ public class MuseumDetail extends AppCompatActivity {
                     extras.getString("museum_name"),
                     extras.getString("museum_image_url"),
                     extras.getString("museum_description"),
-                    false // Por defecto, no es favorito
-            );
+                    false, // Por defecto, no es favorito
+                    40.4167, -3.6949);
 
             // Mostrar los datos en la interfaz de usuario
             TextView nameTextView = findViewById(R.id.detailTitle);
