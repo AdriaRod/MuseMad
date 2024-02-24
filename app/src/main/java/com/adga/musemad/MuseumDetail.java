@@ -27,7 +27,7 @@ public class MuseumDetail extends AppCompatActivity {
                     extras.getString("museum_image_url"),
                     extras.getString("museum_description"),
                     false, // Por defecto, no es favorito
-                    40.4167, -3.6949);
+                    40.4167, -3.6949, R.drawable.busto);
 
             // Mostrar los datos en la interfaz de usuario
             TextView nameTextView = findViewById(R.id.detailTitle);
