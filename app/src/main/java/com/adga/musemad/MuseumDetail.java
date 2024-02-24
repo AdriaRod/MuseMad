@@ -19,6 +19,21 @@ public class MuseumDetail extends AppCompatActivity {
     private Museum museum;
     private SharedPreferences sharedPreferences;
     private FloatingActionButton favoritesButton;
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isFavorite = sharedPref.getBoolean("museum_fav", false);
+
+        museum.setFavorite(isFavorite);
+
+        if (museum.isFavorite()) {
+            favoritesButton.setImageResource(R.drawable.heart2);
+        } else {
+            favoritesButton.setImageResource(R.drawable.heart);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +108,9 @@ public class MuseumDetail extends AppCompatActivity {
                     }
                 }
             });
+
         }
+
     }
 }
 

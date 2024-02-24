@@ -28,9 +28,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCVwJBtTsZKswwDq3fhhgulnpWCez27ieY" /> <!-- API GOOGLE MAPS -->
         <activity
-            android:name=".Museo"
-            android:exported="false" />
-        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
