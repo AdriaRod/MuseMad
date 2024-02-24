@@ -13,26 +13,23 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-// MuseumAdapter.java
 public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder> {
     private List<Museum> museums;
     private OnItemClickListener listener;
-
-    public void updateData(List<Museum> museums) {
-        this.museums.clear();
-        this.museums.addAll(museums);
-        notifyDataSetChanged();
-    }
-
-
-    public interface OnItemClickListener {
-        void onItemClick(Museum museum);
-    }
 
     public MuseumAdapter(List<Museum> museums, OnItemClickListener listener) {
         this.museums = museums;
         this.listener = listener;
     }
+
+    public void updateList(List<Museum> newMuseums) {
+        // Actualiza la lista de museos del adaptador
+        this.museums = newMuseums;
+
+        // Notifica al adaptador que los datos han cambiado
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -76,6 +73,9 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.ViewHolder
             museumImage = itemView.findViewById(R.id.museumImage);
             museumName = itemView.findViewById(R.id.museumName);
         }
+    }
 
+    public interface OnItemClickListener {
+        void onItemClick(Museum museum);
     }
 }

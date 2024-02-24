@@ -22,23 +22,36 @@
 <img src="img/homev2.png" alt="Primera vista en el home" width="364" height="720"/>
 </p>
 
-#### Info Museo
+##### El *AppBarLayout* se contraerá al bajar en el *RecyclerView* dejando así una vista más clara de las tarjetas con los museos
 <p align="center">
-<img src="img/museuminfov1.png" alt="Imagen del login" width="364" height="720"/>
+<img src="img/home2v1.png" alt="Primera vista en el home" width="364" height="720"/>
+</p>
+
+##### Por último también contamos con un *SearchView* funcional para filtrar los museos por su nombre
+<p align="center">
+<img src="img/homesv.png" alt="Primera vista en el home" width="364" height="720"/>
+</p>
+
+#### Settings
+
+#### Detail Museo
+##### Al pulsar en una de las tarjetas, nos enviará a una nueva vista en la que podremos ver los detalles del museo además de agregarlo a favoritos usando el botón de la derecha, para así poderlo ver en nuestra vista de favoritos
+<p align="center">
+<img src="img/museuminfov1.png" alt="Imagen de DetailMuseum" width="364" height="720"/>
 </p>
 
 ## Mapa
 
 #### Mapa
-##### *Por completar*
+##### Utilizando la API de *Google Maps* hemos hecho un mapa con distintos símbolos los cuales representan la ubicación de los distintos museos, al pulsar en uno de estos símbolos, podremos abrir *Google Maps* con la dirección de este museo o abrir la vista de *DetailMuseum* desde aqui
 <p align="center">
 <img src="img/mapav0.png" alt="Imagen del fragment del mapa" width="364" height="720"/>
 </p>
 
-## Perfil
+## Favoritos
 
-#### Perfil
-##### En el apartado de *Perfil* contamos con varias opciones para la applicación (Modo noche, notificaciones...) Además el usuario puede ver los museos marcados como favorito, o los marcados para visitar más tarde
+#### Favoritos
+##### En el apartado de *Favoritos* veremos los museos que tengamos agregados a favoritos en una vista distinta, para así poderlos buscar más facilmente si es que un museo nos ha gustado o queremos visitarlo próximamente
 <p align="center">
-<img src="img/userv1.png" alt="Imagen del fragment del mapa" width="364" height="720"/>
+<img src="img/favv1.png" alt="Imagen del fragment de favoritos" width="364" height="720"/>
 </p>

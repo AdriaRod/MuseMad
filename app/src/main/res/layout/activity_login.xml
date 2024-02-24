@@ -82,7 +82,7 @@
 
             <Button
                 android:id="@+id/aceptar"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:backgroundTint="#E30513"
@@ -97,7 +97,7 @@
 
             <Button
                 android:id="@+id/invitado"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#F3F3F3"
@@ -112,10 +112,11 @@
 
             <TextView
                 android:id="@+id/register"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:alpha="0.7"
+                android:gravity="center"
                 android:fontFamily="@font/montserrat"
                 android:onClick="openSignup"
                 android:text="@string/eRegist"
