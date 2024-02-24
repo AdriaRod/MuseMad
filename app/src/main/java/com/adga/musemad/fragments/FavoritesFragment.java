@@ -53,6 +53,8 @@ public class FavoritesFragment extends Fragment {
         String imageUrl = sharedPref.getString("museum_image_url", "");
         String description = sharedPref.getString("museum_description", "");
         boolean isFavorite = sharedPref.getBoolean("museum_fav", false);
+        int icon = sharedPref.getInt("museum_icon", 0);
+
 
         // Verifica si el museo ya está en la lista de favoritos
         Museum existingMuseum = null;
@@ -67,7 +69,8 @@ public class FavoritesFragment extends Fragment {
             favoriteMuseums.remove(existingMuseum);
         } else {
             // Crea un nuevo objeto Museum y agrégalo a la lista de favoritos solo si no existía
-            Museum museum = new Museum(id, name, imageUrl, description, isFavorite, 40.4167, -3.6949);
+            Museum museum = new Museum(id, name, imageUrl, description, isFavorite, 40.4167,
+                    -3.6949,icon);
             favoriteMuseums.add(museum);
         }
         updateFavorites();

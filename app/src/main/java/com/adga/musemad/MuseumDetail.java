@@ -37,8 +37,8 @@ public class MuseumDetail extends AppCompatActivity {
                     extras.getString("museum_name"),
                     extras.getString("museum_image_url"),
                     extras.getString("museum_description"),
-                    extras.getBoolean("museum_fav"),
-                    40.4167, -3.6949);
+                    false, 40.4167, -3.6949,
+                    extras.getInt("museum_icon"));
 
             // Mostrar los datos en la interfaz de usuario
             TextView nameTextView = findViewById(R.id.detailTitle);
@@ -79,6 +79,7 @@ public class MuseumDetail extends AppCompatActivity {
                     editor.putString("museum_image_url", museum.getImageUrl());
                     editor.putString("museum_description", museum.getDescription());
                     editor.putBoolean("museum_fav", museum.isFavorite());
+                    editor.putInt("museum_icon", museum.getIconResource());
 
                     // Aplica los cambios
                     editor.apply();
