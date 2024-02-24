@@ -8,14 +8,16 @@ public class Museum {
     private boolean fav;
     private double latitude;
     private double longitude;
+    private int iconResource;
 
-    public Museum(String name, String imageUrl, String description, boolean fav, double latitude, double longitude) {
+    public Museum(String name, String imageUrl, String description, boolean fav, double latitude, double longitude, int iconResource) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.description = description;
         this.fav = fav;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.iconResource = iconResource;
     }
 
 
@@ -46,4 +48,6 @@ public class Museum {
     public double getLongitude() {
         return longitude;
     }
+
+    public int getIconResource(){return iconResource;}
 }
