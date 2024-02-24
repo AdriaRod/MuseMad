@@ -230,7 +230,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                     public void onSuccess(Location location) {
                         if (location != null) {
                             LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.puntorojo); // Reemplaza "blue_dot" con el nombre de tu icono
+                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.mipmap.ic_punto_rojo); // Reemplaza "blue_dot" con el nombre de tu icono
                             mMap.addMarker(new MarkerOptions().position(currentLocation).title("Mi Ubicación").icon(icon));
                         }
                     }
