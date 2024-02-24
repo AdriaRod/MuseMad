@@ -39,7 +39,7 @@ public class FavoritesFragment extends Fragment {
                 getString(R.string.descPrado), false, 40.4167, -3.6949));
         museumsfav.add(new Museum("Museo Reina Sofía", "https://static2.museoreinasofia.es/sites/default/files/snippet_museo_sede_principal_5.png",
                 getString(R.string.descPrado), true, 40.4167, -3.6949));
-        museumsfav.add(new Museum("Museo Arqueológico Nacional", "https://madridando.com/wp-content/uploads/2018/08/museo-arqueológico-nacional.jpeg", getString(R.string.descArqueologico), true, 40.4167, -3.6949));
+        museumsfav.add(new Museum("Museo Arqueológico Nacional", "https://www.mujerescambianlosmuseos.com/wp-content/uploads/2022/06/MAN_2015-Jose-Barea-PM-1024x683.jpg", getString(R.string.descArqueologico), true, 40.4167, -3.6949));
         museumsfav.add(new Museum("Museo Sorolla", "https://offloadmedia.feverup.com/madridsecreto.co/wp-content/uploads/2023/07/13123446/shutterstock_1223904955-1-1.jpg", getString(R.string.descSorolla), true, 40.4167, -3.6949));
         museumsfav.add(new Museum("Museo de Historia de Madrid", "https://www.esmadrid.com/sites/default/files/styles/content_type_full/public/recursosturisticos/infoturistica/Museodehistoria663x335_1409746743.637.jpg?itok=nMIQBgrw", getString(R.string.descHistoriaMadrid), true, 40.4167, -3.6949));
         museumsfav.add(new Museum("Museo de América", "https://estaticos.esmadrid.com/cdn/farfuture/xpDXcfkMNRvlNeMEJJLki9wNUFyzDJkQzPRlp7R2ow4/mtime:1646729529/sites/default/files/styles/content_type_full/public/recursosturisticos/infoturistica/museo_america_1.jpg?itok=J1PJO9d0", getString(R.string.descAmerica), true, 40.4167, -3.6949));

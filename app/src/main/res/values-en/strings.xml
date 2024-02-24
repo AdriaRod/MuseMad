@@ -60,6 +60,13 @@
     <string name="descAutomovil">The Automobile Museum takes you on a journey through the history and evolution of the automobile in Spain, with a collection of vintage, classic, and period cars, as well as other objects related to the automotive industry.</string>
     <string name="descCera">The Wax Museum of Madrid invites you to meet your favorite characters, with a collection of wax figures of celebrities, historical figures, athletes, politicians, and film and television stars.</string>
     <string name="descArteContemporaneo">The Museum of Contemporary Art of the Ministry of Culture offers a glimpse into the contemporary art scene in Spain, with a collection of works by Spanish and international artists representing different trends and artistic movements.</string>
+    <string name="hint_busqueda_museo">Search your favorite museum</string>
+    <string name="titulofav">Your favorite Museums</string>
+    <string name="settings">Settings</string>
+    <string name="aboutus">About us</string>
+    <string name="contactus">Contact us</string>
+    <string name="logout">Log out</string>
+    <string name="musemaddevs">Musemad developer\'s</string>
 
 
 </resources>

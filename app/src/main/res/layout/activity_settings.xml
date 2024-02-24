@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:text="Ajustes"
+        android:text="@string/settings"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -65,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Sobre nosotros"
+                        android:text="@string/aboutus"
                         android:layout_toEndOf="@id/aboutimg"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
@@ -92,7 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Contáctanos"
+                        android:text="@string/contactus"
                         android:layout_toEndOf="@id/contactimg"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
@@ -131,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Cerrar sesión"
+                        android:text="@string/logout"
                         android:layout_toEndOf="@id/cerrarimg"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>

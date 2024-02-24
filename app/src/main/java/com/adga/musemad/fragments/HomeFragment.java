@@ -48,14 +48,13 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         sView = view.findViewById(R.id.searchView);
 
-        // Inicializa la lista de museos
         museums = new ArrayList<>();
         museums.add(new Museum("Museo del Prado", "https://www.hotelindiana.es/wp-content/uploads/2017/12/Visitar-Museo-del-Prado-Gratis.jpg", getString(R.string.descPrado), true, 40.4139, -3.6923));
         museums.add(new Museum("Museo Thyssen", "https://blog.arzuaga.es/wp-content/uploads/2020/04/museo-thyssen.jpg",
                 getString(R.string.descThyssen), false, 40.4167, -3.6949));
         museums.add(new Museum("Museo Reina Sofía", "https://static2.museoreinasofia.es/sites/default/files/snippet_museo_sede_principal_5.png",
                 getString(R.string.descReinaSofia), true, 40.4167, -3.6949));
-        museums.add(new Museum("Museo Arqueológico Nacional", "https://madridando.com/wp-content/uploads/2018/08/museo-arqueológico-nacional.jpeg", getString(R.string.descArqueologico), true, 40.4167, -3.6949));
+        museums.add(new Museum("Museo Arqueológico Nacional", "https://www.mujerescambianlosmuseos.com/wp-content/uploads/2022/06/MAN_2015-Jose-Barea-PM-1024x683.jpg", getString(R.string.descArqueologico), true, 40.4167, -3.6949));
         museums.add(new Museum("Museo Sorolla", "https://offloadmedia.feverup.com/madridsecreto.co/wp-content/uploads/2023/07/13123446/shutterstock_1223904955-1-1.jpg", getString(R.string.descSorolla), true, 40.4167, -3.6949));
         museums.add(new Museum("Museo de Historia de Madrid", "https://www.esmadrid.com/sites/default/files/styles/content_type_full/public/recursosturisticos/infoturistica/Museodehistoria663x335_1409746743.637.jpg?itok=nMIQBgrw", getString(R.string.descHistoriaMadrid), true, 40.4167, -3.6949));
         museums.add(new Museum("Museo de América", "https://estaticos.esmadrid.com/cdn/farfuture/xpDXcfkMNRvlNeMEJJLki9wNUFyzDJkQzPRlp7R2ow4/mtime:1646729529/sites/default/files/styles/content_type_full/public/recursosturisticos/infoturistica/museo_america_1.jpg?itok=J1PJO9d0", getString(R.string.descAmerica), true, 40.4167, -3.6949));
@@ -94,7 +93,6 @@ public class HomeFragment extends Fragment {
         museums.add(new Museum("Museo de Arte Contemporáneo del Ministerio de Cultura", "https://upload.wikimedia.org/wikipedia/commons/3/35/Sede_M.A.M.JPG", getString(R.string.descArteContemporaneo), true, 40.4167, -3.6949));
 
 
-        // Configura el adaptador con la lista de museos
         museumAdapter = new MuseumAdapter(museums, new MuseumAdapter.OnItemClickListener() {
             public void onItemClick(Museum museum) {
                 // Abre la actividad de detalles del museo cuando se hace clic en una tarjeta
@@ -109,16 +107,15 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(museumAdapter);
 
         sView.setIconifiedByDefault(false);
-        sView.setQueryHint("Busca tu museo favorito...");
 
-        // Accede a la vista interna del SearchView y cambia su fondo a transparente
+        sView.setQueryHint(getString(R.string.hint_busqueda_museo));
+
         int id = sView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
         View searchPlateView = sView.findViewById(id);
         if (searchPlateView != null) {
             searchPlateView.setBackgroundColor(Color.TRANSPARENT);
         }
 
-        // Configura el listener para el SearchView
         sView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -127,13 +124,9 @@ public class HomeFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Actualiza el estado del texto de búsqueda actual
                 currentQuery = newText;
-
-                // Filtra la lista de museos
                 List<Museum> filteredList = filter(museums, newText);
 
-                // Actualiza el adaptador con la lista filtrada
                 museumAdapter.updateList(filteredList);
 
                 return true;
@@ -144,11 +137,10 @@ public class HomeFragment extends Fragment {
     }
 
     private List<Museum> filter(List<Museum> museums, String query) {
-        query = query.toLowerCase().trim(); // Convierte el texto a minúsculas y elimina espacios en blanco
-
+        query = query.toLowerCase().trim();
         List<Museum> filteredList = new ArrayList<>();
         for (Museum museum : museums) {
-            // Filtra los museos cuyo nombre contiene el texto de búsqueda
+
             if (museum.getName().toLowerCase().contains(query)) {
                 filteredList.add(museum);
             }

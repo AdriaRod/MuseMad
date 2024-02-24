@@ -60,5 +60,12 @@
     <string name="descAutomovil">El Museo del Automóvil te lleva en un viaje a través de la historia y la evolución del automóvil en España, con una colección de coches antiguos, clásicos y de época, así como otros objetos relacionados con la industria automotriz.</string>
     <string name="descCera">El Museo de Cera de Madrid te invita a conocer a tus personajes favoritos, con una colección de figuras de cera de celebridades, personajes históricos, deportistas, políticos y estrellas del cine y la televisión.</string>
     <string name="descArteContemporaneo">El Museo de Arte Contemporáneo del Ministerio de Cultura ofrece una mirada a la escena artística contemporánea en España, con una colección de obras de artistas españoles e internacionales que representan diferentes tendencias y movimientos artísticos.</string>
+    <string name="hint_busqueda_museo">Busca tu museo favorito...</string>
+    <string name="titulofav">Tus museos favoritos</string>
+    <string name="settings">Ajustes</string>
+    <string name="aboutus">Sobre nosotros</string>
+    <string name="contactus">Contáctanos</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="musemaddevs">Desarrolladores de Musemad</string>
 
 </resources>

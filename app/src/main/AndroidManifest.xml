@@ -24,13 +24,9 @@
         <activity
             android:name=".Settings"
             android:exported="false" />
-        <activity
-            android:name=".fragments.Favorites"
-            android:exported="false" /> <!-- esto es para el API DEL MAPA DE GOOGLE -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCVwJBtTsZKswwDq3fhhgulnpWCez27ieY" />
-
+            android:value="AIzaSyCVwJBtTsZKswwDq3fhhgulnpWCez27ieY" /> <!-- API GOOGLE MAPS -->
         <activity
             android:name=".Museo"
             android:exported="false" />
