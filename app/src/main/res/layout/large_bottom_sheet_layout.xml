@@ -45,35 +45,17 @@
             android:layout_weight="0"
             android:textColor="@color/azul_madrid"
             android:text="+info"
+            android:textSize="16sp"
             />
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/heart" />
-
-        <TextView
-            android:id="@+id/Favoritos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:text="Favoritos"
-            android:textSize="16sp" />
-
-    </LinearLayout>
 
     <!-- 2  -->
 
     <LinearLayout
+        android:id="@+id/irAGoogleMaps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

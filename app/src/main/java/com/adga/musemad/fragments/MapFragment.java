@@ -4,12 +4,14 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -355,6 +357,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         // Encuentra el texto "+info" en el layout
         TextView moreInfoTextView = bottomSheetView.findViewById(R.id.info_tv);
+        //Encuentra el linear layout "Ir a Google maps"
+        LinearLayout goToGoogleMaps = bottomSheetView.findViewById(R.id.irAGoogleMaps);
 
         // Agrega el onClickListener para abrir la actividad de detalles del museo
         moreInfoTextView.setOnClickListener(new View.OnClickListener() {
@@ -365,6 +369,29 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
                 // Abre la actividad correspondiente al museo seleccionado
                 openMuseumDetailActivity(museumTitle);
+            }
+        });
+
+        //Agrega el onClickListener para abrir el google maps
+        goToGoogleMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtén el título del marcador (o cualquier identificador único)
+                String museumTitle = marker.getTitle();
+
+                // Busca las coordenadas del museo correspondiente al título
+                double museumLatitude = 0.0;
+                double museumLongitude = 0.0;
+                for (Museum museum : museums) {
+                    if (museum.getName().equals(museumTitle)) {
+                        museumLatitude = museum.getLatitude();
+                        museumLongitude = museum.getLongitude();
+                        break;
+                    }
+                }
+
+                // Abre la actividad correspondiente al museo seleccionado en Google Maps
+                openMuseumGoogleMaps(museumTitle, museumLatitude, museumLongitude);
             }
         });
 
@@ -379,6 +406,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         bottomSheetDialog.show();
     }
 
+    private void openMuseumGoogleMaps(String museumTitle, double museumLatitude, double museumLongitude) {
+
+        // Construye la URI para la ubicación del museo
+        Uri gmmIntentUri = Uri.parse("geo:" + museumLatitude + "," + museumLongitude + "?q=" + Uri.encode(museumTitle));
+
+        // Crea un Intent con la acción de ver la ubicación en Google Maps
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps"); // Especifica que se debe usar la aplicación de Google Maps
+
+        // Verifica si hay una aplicación que pueda manejar el intento antes de iniciarlo
+        if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
+
+    }
 
 
     private void openMuseumDetailActivity(String museumTitle) {
