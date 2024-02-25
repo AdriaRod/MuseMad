@@ -1,6 +1,8 @@
 package com.adga.musemad.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -131,6 +133,8 @@ public class HomeFragment extends Fragment {
                 "://upload.wikimedia.org/wikipedia/commons/3/35/Sede_M.A.M.JPG", getString(R.string.descArteContemporaneo), false, 40.4243, -3.6965, R.mipmap.ic_museo_arte_contemporaneo));
 
 
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
         museumAdapter = new MuseumAdapter(museums, new MuseumAdapter.OnItemClickListener() {
             public void onItemClick(Museum museum) {
                 // Abre la actividad de detalles del museo cuando se hace clic en una tarjeta
@@ -138,6 +142,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("museum_name", museum.getName());
                 intent.putExtra("museum_image_url", museum.getImageUrl());
                 intent.putExtra("museum_description", museum.getDescription());
+                intent.putExtra("museum_fav", museum.isFavorite());
                 intent.putExtra("museum_icon", museum.getIconResource());
                 startActivity(intent);
             }

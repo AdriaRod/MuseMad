@@ -32,20 +32,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Obtén una instancia del FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        // Crea una instancia del fragmento que deseas agregar
         FavoritesFragment favoritesFragment = new FavoritesFragment();
 
-        // Comienza una transacción de fragmentos
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        // Agrega el fragmento a la transacción (reemplaza un contenedor de fragmentos con el fragmento)
         transaction.replace(R.id.fragment_container, favoritesFragment, "favoritesFragmentTag");
 
-        // Realiza la transacción
         transaction.commit();
+
+
         //2
         sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +25,6 @@ public class FavoritesFragment extends Fragment {
 
     private FavoritesAdapter museumAdapter;
     private RecyclerView favrv;
-
     private List<Museum> museumsfav;
     private ArrayList<Museum> favoriteMuseums = new ArrayList<>();
 
@@ -52,28 +52,30 @@ public class FavoritesFragment extends Fragment {
         String name = sharedPref.getString("museum_name", "");
         String imageUrl = sharedPref.getString("museum_image_url", "");
         String description = sharedPref.getString("museum_description", "");
-        boolean isFavorite = sharedPref.getBoolean("museum_fav", false);
+        boolean isFavorite = sharedPref.getBoolean("museum_fav", true);
         int icon = sharedPref.getInt("museum_icon", 0);
+        boolean dataSent = sharedPref.getBoolean("data_sent", false);
 
-
-        // Verifica si el museo ya está en la lista de favoritos
-        Museum existingMuseum = null;
-        for (Museum museum : favoriteMuseums) {
-            if (museum.getName().equals(name)){
-                existingMuseum = museum;
-                break;
+        if(dataSent==true) {
+            // Verifica si el museo ya está en la lista de favoritos
+            Museum existingMuseum = null;
+            for (Museum museum : favoriteMuseums) {
+                if (museum.getName().equals(name)) {
+                    existingMuseum = museum;
+                    break;
+                }
             }
+            // Si el museo ya existe, elimínalo de la lista
+            if (existingMuseum != null) {
+                favoriteMuseums.remove(existingMuseum);
+            } else {
+                // Crea un nuevo objeto Museum y agrégalo a la lista de favoritos solo si no existía
+                Museum museum = new Museum(id, name, imageUrl, description, isFavorite, 40.4167,
+                        -3.6949, icon);
+                favoriteMuseums.add(museum);
+            }
+            updateFavorites();
         }
-        // Si el museo ya existe, elimínalo de la lista
-        if (existingMuseum != null) {
-            favoriteMuseums.remove(existingMuseum);
-        } else {
-            // Crea un nuevo objeto Museum y agrégalo a la lista de favoritos solo si no existía
-            Museum museum = new Museum(id, name, imageUrl, description, isFavorite, 40.4167,
-                    -3.6949,icon);
-            favoriteMuseums.add(museum);
-        }
-        updateFavorites();
     }
 
 
@@ -87,6 +89,7 @@ public class FavoritesFragment extends Fragment {
                         intent.putExtra("museum_name", museum.getName());
                         intent.putExtra("museum_image_url", museum.getImageUrl());
                         intent.putExtra("museum_description", museum.getDescription());
+                        intent.putExtra("museum_fav", museum.isFavorite());
                         startActivityForResult(intent, 1); // Iniciar actividad con requestCode 1
                     }
                 });
