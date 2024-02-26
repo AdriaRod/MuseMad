@@ -1,15 +1,13 @@
 package com.adga.musemad;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutUs extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class AboutUs extends AppCompatActivity {
         gitG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebPage("http://www.google.com");
+                openWebPage("https://github.com/gabrielfonseca333");
             }
         });
 
@@ -33,7 +31,7 @@ public class AboutUs extends AppCompatActivity {
         gitA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebPage("http://www.google.com");
+                openWebPage("https://github.com/AdriaRod");
             }
         });
 
